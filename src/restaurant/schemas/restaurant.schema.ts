@@ -1,11 +1,9 @@
-import * as mongoose from 'mongoose';
-import { MenuItemSchema } from './menuItem.schema';
+import { Schema } from 'mongoose';
 
-export const RestaurantSchema = new mongoose.Model({
-    id: Number,
-    address: String,
-    lat: Number,
-    lng: Number,
+export const RestaurantSchema = new Schema({
+    id: String,
+    name: String,
+    location: String,
     type: String,
-    //menu: MenuItemSchema[]
+    menuIds: [String]
 });

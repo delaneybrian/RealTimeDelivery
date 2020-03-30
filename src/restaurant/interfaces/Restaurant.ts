@@ -1,11 +1,11 @@
-import { MenuItem } from './MenuItem';
 import { RestaurantType } from './RestaurantType';
+import { Menu } from './Menu';
 
 export interface Restaurant{
     id: number;
     address: string;
     lat: string;
     lng: string;
-    type: Array<RestaurantType>;
-    menu: Array<MenuItem>
+    type: RestaurantType;
+    menus: Menu[]
 }
