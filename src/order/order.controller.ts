@@ -5,9 +5,7 @@ import { OrderService } from './order.service';
 @Controller('order')
 export class OrderController {
 
-    constructor(private orderService: OrderService){
-
-    }
+    constructor(private orderService: OrderService){}
 
     @Post()
     async createOrder(@Body() createOrderDto: PlaceOrderDto){

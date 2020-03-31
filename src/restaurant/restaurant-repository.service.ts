@@ -36,11 +36,14 @@ export class RestaurantRepositoryService {
     }
 
     async DeleteRestaurantById(restaurantId: String){
-        this.restaurantModel.deleteOne( { id: restaurantId })
+        await this.restaurantModel.deleteOne( { id: restaurantId })
     }
 
     async AddMenuToRestaurant(restaurantId: string, menuId: string): Promise<Restaurant> {
-        let restaurant = await this.restaurantModel.findOne( {id: restaurantId })
+
+        let restaurant = await this.restaurantModel.findOne( { id: restaurantId })
+
+        console.log(restaurant);
 
         restaurant.menuIds.push(menuId);
 
