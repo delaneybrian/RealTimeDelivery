@@ -5,5 +5,5 @@ export const RestaurantSchema = new Schema({
     name: String,
     location: String,
     type: String,
-    menuIds: [String]
+    menusIds: [String]
 });

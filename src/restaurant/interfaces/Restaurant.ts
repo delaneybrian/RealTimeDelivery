@@ -1,5 +1,4 @@
-import { RestaurantType } from './RestaurantType';
-import { Menu } from './Menu';
+import { RestaurantType } from "./RestaurantType";
 
 export interface Restaurant{
     id: number;
@@ -7,5 +6,5 @@ export interface Restaurant{
     lat: string;
     lng: string;
     type: RestaurantType;
-    menus: Menu[]
+    menuIds: String[]
 }

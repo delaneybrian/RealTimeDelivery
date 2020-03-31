@@ -1,6 +1,8 @@
+import { MenuItemType } from "../interfaces/MenuItemType";
+
 export class CreateMenuItemDto {
     id: string;
     name: string;
-    location: string;
-    type: RestaurantType;
+    price: number;
+    type: MenuItemType;
 }
