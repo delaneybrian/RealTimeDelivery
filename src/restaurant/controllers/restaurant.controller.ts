@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Query, Delete } from '@nestjs/common';
-import { Restaurant } from '../interfaces/RestaurantDocument';
 import { CreateRestaurantDto } from '../dtos/CreateRestaurantDto';
 import { RestaurantQueryDto } from '../dtos/RestaurantQueryDto';
 import { RestaurantRepositoryService } from '../restaurant-repository.service';
+import { Restaurant } from '../interfaces/Restaurant';
 
 @Controller('restaurant')
 export class RestaurantController {

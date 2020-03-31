@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 import { MenuItem } from './MenuItem';
 
 export interface MenuItemDocument extends Document, MenuItem {
-    id: number;
+    id: string;
     name: string;
     price: number;
     type: MenuItemType;

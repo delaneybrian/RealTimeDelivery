@@ -19,12 +19,16 @@ export class MenuController {
     }
 
     @Post()
-    async createMenuItem(@Body() createMenuItemDto: CreateMenuItemDto){
-        return this.menuRepositoryService.CreateMenuItem(createMenuItemDto);
+    async createMenuItem(
+        menuId: string,
+        @Body() createMenuItemDto: CreateMenuItemDto){
+        return this.menuRepositoryService.CreateMenuItemOnMenu(menuId, createMenuItemDto);
     }
 
     @Delete()
-    async deleteMenuItemById(@Query() menuItemId: string){
-        return this.menuRepositoryService.DeleteMenuItemById(menuItemId);
+    async deleteMenuItemById(
+        menuId: string,
+        @Query() menuItemId: string){
+        return this.menuRepositoryService.DeleteMenuItemOnMenu(menuId, menuItemId);
     }
 }

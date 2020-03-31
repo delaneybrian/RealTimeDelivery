@@ -1,4 +1,4 @@
-import { RestaurantType } from "./RestaurantType";
+import { RestaurantType } from './RestaurantType';
 
 export interface Restaurant{
     id: number;

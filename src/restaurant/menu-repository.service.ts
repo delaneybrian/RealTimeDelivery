@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateMenuDto } from './dtos/CreateMenuDto';
 import { Model } from 'mongoose';
 import { CreateMenuItemDto } from './dtos/CreateMenuItemDto';
@@ -6,17 +6,18 @@ import { InjectModel } from '@nestjs/mongoose';
 import { MenuDocument } from './interfaces/MenuDocument';
 import { Menu } from './interfaces/Menu';
 import { MenuItemDocument } from './interfaces/MenuItemDocument';
+import * as _ from 'lodash';
 
 @Injectable()
 export class MenuRepositoryService {
 
     constructor(@InjectModel('Menu') private menuModel: Model<MenuDocument>,
-                @InjectModel('MenuItem') private menuItemModel: Model<MenuItemDocument>) { }
+        @InjectModel('MenuItem') private menuItemModel: Model<MenuItemDocument>) { }
 
     async GetMenuById(menuId: string): Promise<Menu> {
         let menu = await this.menuModel
-        .findOne( { 'id': menuId })
-        .exec();
+            .findOne({ 'id': menuId })
+            .exec();
 
         return menu;
     }
@@ -33,7 +34,7 @@ export class MenuRepositoryService {
     }
 
     async CreateMenuItemOnMenu(menuId: string, createMenuItemDto: CreateMenuItemDto): Promise<Menu> {
-        let menu = await this.menuModel.findOne( {id: menuId });
+        let menu = await this.menuModel.findOne({ id: menuId });
 
         var menuItem = await this.menuItemModel.create(createMenuItemDto);
 
@@ -45,12 +46,12 @@ export class MenuRepositoryService {
     }
 
     async DeleteMenuItemOnMenu(menuId: string, menuItemId: string): Promise<Menu> {
-        let menu = await this.menuModel.findOne( {id: menuId });
+        let menu = await this.menuModel.findOne({ id: menuId });
 
-        menu.items.filter(obj => obj.id !== menuItemId);
+        _.remove(menu.items, (item) => {return item.id === menuItemId});
 
-       menu.save();
+        menu.save();
 
-       return menu;
+        return menu;
     }
 }

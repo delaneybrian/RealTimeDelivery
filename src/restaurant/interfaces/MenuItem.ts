@@ -1,7 +1,7 @@
-import { MenuItemType } from "./MenuItemType";
+import { MenuItemType } from './MenuItemType';
 
 export interface MenuItem {
-    id: number;
+    id: string;
     name: string;
     price: number;
     type: MenuItemType;
