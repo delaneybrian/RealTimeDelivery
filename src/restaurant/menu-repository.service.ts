@@ -30,7 +30,7 @@ export class MenuRepositoryService {
     }
 
     async DeleteMenuById(menuId: String) {
-        this.menuModel.deleteOne({ id: menuId });
+        await this.menuModel.deleteOne({ id: menuId });
     }
 
     async CreateMenuItemOnMenu(menuId: string, createMenuItemDto: CreateMenuItemDto): Promise<Menu> {

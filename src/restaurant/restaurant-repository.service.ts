@@ -5,13 +5,17 @@ import { RestaurantType } from './interfaces/RestaurantType';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Restaurant } from './interfaces/Restaurant';
+import * as _ from 'lodash';
+import { MenuDocument } from './interfaces/MenuDocument';
 
 @Injectable()
 export class RestaurantRepositoryService {
 
-    constructor(@InjectModel('Restaurant') private restaurantModel: Model<RestaurantDocument>){}
+    constructor(
+        @InjectModel('Restaurant') private restaurantModel: Model<RestaurantDocument>,
+        @InjectModel('Menu') private menuModel: Model<MenuDocument>){}
 
-    async GetRestaurantsByLocation(location: String): Promise<Restaurant[]> {
+    async GetRestaurantsByLocation(location: string): Promise<Restaurant[]> {
         let restaurants = await this.restaurantModel
         .find( { location: location })
         .exec();
@@ -19,7 +23,7 @@ export class RestaurantRepositoryService {
         return restaurants;
     }
 
-    async GetRestaurantsByLocationAndType(location: String, type: RestaurantType): Promise<Restaurant[]>{
+    async GetRestaurantsByLocationAndType(location: string, type: RestaurantType): Promise<Restaurant[]>{
          let restaurants = await this.restaurantModel
         .find( { location: location, type: type })
         .exec();
@@ -39,13 +43,24 @@ export class RestaurantRepositoryService {
         await this.restaurantModel.deleteOne( { id: restaurantId })
     }
 
+    async DeleteMenuFromRestaurant(restaurantId: string, menuId: string): Promise<Restaurant> {
+
+        const restaurant = await this.restaurantModel.findOne( {id: restaurantId});
+
+        _.remove(restaurant.menuSummaries, (menuSummary) => {return menuSummary.id === menuId});
+
+        restaurant.save();
+
+        return restaurant;
+    }
+
     async AddMenuToRestaurant(restaurantId: string, menuId: string): Promise<Restaurant> {
 
-        let restaurant = await this.restaurantModel.findOne( { id: restaurantId })
+        let restaurant = await this.restaurantModel.findOne( {id: restaurantId});
 
-        console.log(restaurant);
+        let menu = await this.menuModel.findOne( {id: menuId} );
 
-        restaurant.menuIds.push(menuId);
+        restaurant.menuSummaries.push(menu);
 
         restaurant.save();
 

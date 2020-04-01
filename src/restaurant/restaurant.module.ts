@@ -6,13 +6,14 @@ import { RestaurantRepositoryService } from './restaurant-repository.service';
 import { MenuRepositoryService } from './menu-repository.service';
 import { MenuItemSchema } from './schemas/menuItem.schema';
 import { MenuSchema } from './schemas/menu.schema';
+import { MenuController } from './controllers/menu.controller';
 
 @Module({ 
     imports: [
         MongooseModule.forFeature([{ name: 'Restaurant', schema: RestaurantSchema }]),
         MongooseModule.forFeature([{ name: 'MenuItem', schema: MenuItemSchema }]),
         MongooseModule.forFeature([{ name: 'Menu', schema: MenuSchema }])],
-    controllers: [RestaurantController],
+    controllers: [RestaurantController, MenuController],
     providers: [RestaurantRepositoryService, MenuRepositoryService]
 })
 export class RestaurantModule {}

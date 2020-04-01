@@ -1,10 +1,11 @@
 import { RestaurantType } from './RestaurantType';
+import { MenuSummary } from './MenuSummary';
 
 export interface Restaurant{
-    id: number;
+    id: string;
+    name: string;
     address: string;
-    lat: string;
-    lng: string;
+    location: string;
     type: RestaurantType;
-    menuIds: String[]
+    menuSummaries: MenuSummary[];
 }

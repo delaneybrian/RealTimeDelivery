@@ -26,9 +26,12 @@ export class RestaurantController {
 
     @Post('addmenu')
     async addMenuToRestaurant(@Query('restaurantId') restaurantId: string, @Query('menuId') menuId: string){
-        console.log(menuId);
-        console.log(restaurantId);
         this.restaurantRepositoryService.AddMenuToRestaurant(restaurantId, menuId);
+    }
+
+    @Delete('deletemenu')
+    async deleteMenuFromRestaurant(@Query('restaurantId') restaurantId: string, @Query('menuId') menuId: string){
+        this.restaurantRepositoryService.DeleteMenuFromRestaurant(restaurantId, menuId);
     }
 
     @Delete()
