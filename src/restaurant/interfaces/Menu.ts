@@ -1,7 +1,7 @@
-import { MenuItem } from './MenuItem';
+import { Dish } from './Dish';
 
 export interface Menu{
     id: string;
     name: string;
-    items: MenuItem[];
+    items: Dish[];
 }

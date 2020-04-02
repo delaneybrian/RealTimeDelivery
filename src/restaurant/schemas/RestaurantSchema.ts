@@ -1,8 +1,7 @@
 import { Schema } from 'mongoose';
-import { MenuSummarySchema } from './menuSummary.schema';
+import { MenuSummarySchema } from './MenuSummarySchema';
 
 export const RestaurantSchema = new Schema({
-    id: String,
     name: String,
     address: String,
     location: String,

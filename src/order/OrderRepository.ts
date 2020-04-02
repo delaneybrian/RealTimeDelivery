@@ -6,7 +6,7 @@ import { OrderDocument } from './interfaces/OrderDocument';
 import { Order } from './interfaces/Order';
 
 @Injectable()
-export class OrderService {
+export class OrderRepository {
     constructor(@InjectModel('Order') private orderModel: Model<OrderDocument>) {}
 
     async create(createOrderDto: PlaceOrderDto) : Promise<Order> {

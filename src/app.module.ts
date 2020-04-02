@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { OrderModule } from './order/order.module';
-import { RestaurantModule } from './restaurant/restaurant.module';
+import { OrderModule } from './order/OrderModule';
+import { RestaurantModule } from './restaurant/infrastructure/repositories/RestaurantModule';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({

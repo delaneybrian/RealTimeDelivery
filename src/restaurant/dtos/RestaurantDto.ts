@@ -1,6 +1,6 @@
 import { RestaurantType } from "../interfaces/RestaurantType";
 
-export class CreateRestaurantDto {
+export class RestaurantDto {
     id: string;
     name: string;
     location: string;

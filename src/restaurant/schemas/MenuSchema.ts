@@ -1,8 +1,7 @@
 import { Schema } from 'mongoose';
-import { MenuItemSchema } from './menuItem.schema';
+import { DishSchema } from './DishSchema';
 
 export const MenuSchema = new Schema({
-    id: String,
     name: String,
-    items: [MenuItemSchema]
+    items: [DishSchema]
 });
