@@ -4,9 +4,10 @@ import { DishDocument } from 'src/restaurant/interfaces/DishDocument';
 import { Model } from 'mongoose';
 import { DishDto } from 'src/restaurant/dtos/DishDto';
 import { Dish } from 'src/restaurant/interfaces/Dish';
+import { IDishRepository } from 'src/interfaces/IDishRepository';
 
 @Injectable()
-export class DishRepository {
+export class DishRepository implements IDishRepository {
 
     constructor(@InjectModel('Dish') private dishModel: Model<DishDocument>){}
 

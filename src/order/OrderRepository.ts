@@ -4,9 +4,10 @@ import { InjectModel } from '@nestjs/mongoose';
 import { PlaceOrderDto } from './dtos/place-order.dto';
 import { OrderDocument } from './interfaces/OrderDocument';
 import { Order } from './interfaces/Order';
+import { IOrderRepository } from 'src/interfaces/IOrderRepository';
 
 @Injectable()
-export class OrderRepository {
+export class OrderRepository implements IOrderRepository {
     constructor(@InjectModel('Order') private orderModel: Model<OrderDocument>) {}
 
     async create(createOrderDto: PlaceOrderDto) : Promise<Order> {

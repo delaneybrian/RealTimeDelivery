@@ -1,11 +1,11 @@
-import { Controller, Patch, Get, Param, Post, Delete, Body, NotFoundException } from '@nestjs/common';
-import { DishRepository } from '../infrastructure/repositories/DishRepository';
+import { Controller, Get, Param, Post, Delete, Body, NotFoundException, Put } from '@nestjs/common';
 import { DishDto } from '../dtos/DishDto';
+import { IDishRepository } from 'src/interfaces/IDishRepository';
 
 @Controller('dishes')
 export class DishController {
 
-    constructor(private dishRepository: DishRepository) { }
+    constructor(private dishRepository: IDishRepository) { }
 
     @Get(':id')
     async getDishById(@Param('id') id: string) {
@@ -30,7 +30,7 @@ export class DishController {
             throw new NotFoundException(`Dish with id ${id} not found`);
     }
 
-    @Patch(':id')
+    @Put(':id')
     async updateDishById(@Param('id') id: string,
         @Body() dishDto: DishDto) {
         let dishMaybe = await this.dishRepository.UpdateDishById(id, dishDto);
