@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { MenuDto } from '../../dtos/MenuDto';
+import { MenuDto } from '../../../restaurant/dtos/MenuDto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { MenuDocument } from '../../interfaces/MenuDocument';
-import { Menu } from '../../interfaces/Menu';
+import { MenuDocument } from '../../../definitions/MenuDocument';
+import { Menu } from '../../../definitions/Menu';
 import * as _ from 'lodash';
+import { IMenuRepository } from 'src/interfaces/IMenuRepository';
 
 @Injectable()
-export class MenuRepository {
+export class MongooseMenuRepository implements IMenuRepository {
 
     constructor(@InjectModel('Menu') private menuModel: Model<MenuDocument>) { }
 

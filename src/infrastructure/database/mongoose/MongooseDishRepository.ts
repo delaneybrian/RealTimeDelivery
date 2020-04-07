@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { DishDocument } from 'src/restaurant/interfaces/DishDocument';
+import { DishDocument } from 'src/definitions/DishDocument';
 import { Model } from 'mongoose';
 import { DishDto } from 'src/restaurant/dtos/DishDto';
-import { Dish } from 'src/restaurant/interfaces/Dish';
+import { Dish } from 'src/definitions/Dish';
 import { IDishRepository } from 'src/interfaces/IDishRepository';
 
 @Injectable()
-export class DishRepository implements IDishRepository {
+export class MongooseDishRepository implements IDishRepository {
 
     constructor(@InjectModel('Dish') private dishModel: Model<DishDocument>){}
 

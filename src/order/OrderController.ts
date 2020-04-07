@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Body, Query } from '@nestjs/common';
 import { PlaceOrderDto } from './dtos/place-order.dto';
-import { OrderRepository } from './OrderRepository';
+import { IOrderRepository } from 'src/interfaces/IOrderRepository';
 
 @Controller('order')
 export class OrderController {
 
-    constructor(private orderRepository: OrderRepository){}
+    constructor(private orderRepository: IOrderRepository){}
 
     @Post()
     async createOrder(@Body() createOrderDto: PlaceOrderDto){

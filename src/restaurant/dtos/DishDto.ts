@@ -1,4 +1,4 @@
-import { DishType } from "../interfaces/DishType";
+import { DishType } from "../../definitions/DishType";
 
 export class DishDto {
     id: string;

@@ -1,13 +1,13 @@
 import { Controller, Get, Post, Body, Query, Delete, Param } from '@nestjs/common';
 import { RestaurantDto } from '../dtos/RestaurantDto';
 import { RestaurantQueryDto } from '../dtos/RestaurantQueryDto';
-import { RestaurantRepository } from '../infrastructure/repositories/RestaurantRepository';
-import { Restaurant } from '../interfaces/Restaurant';
+import { Restaurant } from '../../definitions/Restaurant';
+import { IRestaurantRepository } from 'src/interfaces/IRestaurantRepository';
 
 @Controller('restaurants')
 export class RestaurantController {
 
-    constructor(private restaurantRepository: RestaurantRepository){}
+    constructor(private restaurantRepository: IRestaurantRepository){}
 
     @Get(':id')
     async getRestaurantById(@Param('id') id: string): Promise<Restaurant>{

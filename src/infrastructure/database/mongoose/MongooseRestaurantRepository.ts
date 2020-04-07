@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { RestaurantDocument } from '../../interfaces/RestaurantDocument';
-import { RestaurantDto } from '../../dtos/RestaurantDto';
-import { RestaurantType } from '../../interfaces/RestaurantType';
+import { RestaurantDocument } from '../../../definitions/RestaurantDocument';
+import { RestaurantDto } from '../../../restaurant/dtos/RestaurantDto';
+import { RestaurantType } from '../../../definitions/RestaurantType';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Restaurant } from '../../interfaces/Restaurant';
+import { Restaurant } from '../../../definitions/Restaurant';
 import * as _ from 'lodash';
-import { MenuDocument } from '../../interfaces/MenuDocument';
+import { MenuDocument } from '../../../definitions/MenuDocument';
+import { IRestaurantRepository } from 'src/interfaces/IRestaurantRepository';
 
 @Injectable()
-export class RestaurantRepository {
+export class MongooseRestaurantRepository implements IRestaurantRepository {
 
     constructor(@InjectModel('Restaurant') private restaurantModel: Model<RestaurantDocument>){}
 

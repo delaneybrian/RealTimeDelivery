@@ -1,4 +1,4 @@
-import { Dish } from "src/restaurant/interfaces/Dish";
+import { Dish } from "src/definitions/Dish";
 import { DishDto } from "src/restaurant/dtos/DishDto";
 
 export abstract class IDishRepository{

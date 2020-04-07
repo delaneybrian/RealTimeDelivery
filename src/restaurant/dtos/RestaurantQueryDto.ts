@@ -1,4 +1,4 @@
-import { RestaurantType } from "../interfaces/RestaurantType";
+import { RestaurantType } from "../../definitions/RestaurantType";
 
 export class RestaurantQueryDto{
     location: string;

@@ -1,4 +1,4 @@
-import { Dish } from "../interfaces/Dish";
+import { Dish } from "../../definitions/Dish";
 
 export class MenuDto {
     id: string;

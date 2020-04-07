@@ -1,11 +1,11 @@
 import { Controller, Body, Post, Delete, Query, Get, Param } from '@nestjs/common';
 import { MenuDto } from '../dtos/MenuDto';
-import { MenuRepository } from '../infrastructure/repositories/MenuRepository';
+import { IMenuRepository } from 'src/interfaces/IMenuRepository';
 
 @Controller('menus')
 export class MenuController {
 
-    constructor(private menuRepository: MenuRepository){}
+    constructor(private menuRepository: IMenuRepository){}
 
     @Get(':id')
     async getMenuById(@Param('id') id: string){
