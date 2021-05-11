@@ -28,7 +28,7 @@
     "@nestjs/platform-socket.io": "^7.0.7",
     "@nestjs/websockets": "^7.0.7",
     "@types/mongoose": "^5.7.8",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mongoose": "^5.9.7",
     "postgres": "^1.0.2",
     "reflect-metadata": "^0.1.13",
